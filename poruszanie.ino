@@ -35,6 +35,20 @@ void jedzpro(int predkosc, int spowolnienie, int czasJazdy)//jedzie prosto
 }
 
 //********************************************************************************
+void jedzProsto(int predkosc, int spowolnienie)//jedzie prosto
+{
+     for(int i = 20; i < predkosc; i++) {     
+      analogWrite(pp, i);
+      analogWrite(lp, i+(3));//korekta do jazdy prosto
+      delay(spowolnienie);
+    }
+}
+void hamuj(){
+    digitalWrite(pp, LOW);
+    digitalWrite(lp, LOW);
+}
+
+//********************************************************************************
 void jedzGdzieWiecejMjejsca(){
       //delay(1000);
     pomiar();
@@ -53,4 +67,21 @@ void jedzGdzieWiecejMjejsca2(){
 int prawdopodobienstwoSkrentu(){
   zawroc=random(3, 5);
   return zawroc;
+}
+//********************************************************************************
+void jedzProstoJakMozesz(){
+  while(dystans()>20)jedzProsto(70,0);
+  hamuj();    
+}
+void skrecGdziewiecejMjejsca(){
+  serwomechanizm.write(0);
+  delay(300);
+  prawo = dystans();
+  serwomechanizm.write(179);
+  delay(300);
+  lewo = dystans();
+  if(prawo>lewo)skretp(100, 3, 100);
+  else skretl(100, 3, 100);
+  serwomechanizm.write(89);
+  delay(300);
 }

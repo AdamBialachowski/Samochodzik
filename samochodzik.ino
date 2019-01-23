@@ -60,16 +60,12 @@ void setup() {
 //testy**********************
 
 
-
 }
 
 void loop() {
-  //Serial.print(prawdopodobienstwoSkrentu());
-    //pomiar();
-    //interpretacja();
-    jedzGdzieWiecejMjejsca();
-    //pomiar2();
-  //void skretp();
+  serwomechanizm.write(89);
+  delay(300);
 
+  jedzProstoJakMozesz();
+  skrecGdziewiecejMjejsca();
 }
-//funkcje

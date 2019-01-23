@@ -36,30 +36,7 @@ byte pomiar12(){
   lewo = 0;
   zawroc = 0;
   
-  serwomechanizm.write(90);
-  delay(300);
-  if(dystans()<10)prosto+=random(0), zawroc+=random(1, 2);
-  if(dystans()<30 & dystans()>10)prosto+=random(3, 5), zawroc+=random(1, 2);
-  if(dystans()> 30) prosto+=random(5, 10), zawroc+=random(1, 2);
-  
-  serwomechanizm.write(0);
-  delay(300);
-  if(dystans()<10)prawo+=random(0), zawroc+=random(1, 2);
-  if(dystans()<30 & dystans()>10)prawo+=random(3, 5), zawroc+=random(1, 2);
-  if(dystans()> 30) prawo+=random(5, 10), zawroc+=random(1, 2);
-  
-  serwomechanizm.write(179);
-  delay(300);
-  if(dystans()<10)lewo+=random(0), zawroc+=random(1, 2);
-  if(dystans()<30 & dystans()>10)lewo+=random(3, 5), zawroc+=random(1, 2);
-  if(dystans()> 30) lewo+=random(5, 10), zawroc+=random(1, 2);
-  
-  if(prosto > prawo & prosto > lewo & prosto > zawroc)kierunek = 1;
-  else if(prawo > lewo & prawo > prosto & prawo > zawroc) kierunek = 2;
-  else if(lewo > prawo & lewo > prosto & lewo > zawroc) kierunek = 3;
-  else if(zawroc > prawo & zawroc > prosto & zawroc > lewo) kierunek = 4;
-  return kierunek;
-}
+
 
 //robi wiele pomiarów i wysyła je do tabdystans[]
 byte pomiar2(){
@@ -76,8 +53,6 @@ byte pomiar2(){
       Serial.print(dystanss);
       Serial.print(".");    
     }
- // delay(10000);
-
     for(byte i = 180;i>0;i--){
       if(i < 181 ) serwomechanizm.write(i);
       delay(30);
@@ -87,9 +62,7 @@ byte pomiar2(){
       Serial.print(",");
       Serial.print(dystanss);
       Serial.print(".");
-      
     }
-   // delay(10000);
 }
 
 byte pomiar3(){
